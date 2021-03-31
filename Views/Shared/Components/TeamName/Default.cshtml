@@ -4,6 +4,6 @@
 <br />
 @foreach (var x in Model)
 {   
-    <a asp-action="Index" asp-controller="Home" asp-route-teamid="@x.TeamId" asp-route-teamname="@x.TeamName">@x.TeamName</a>
+    <a asp-action="Index" asp-controller="Home" asp-route-teamid="@x.TeamId" asp-route-teamname="@x.TeamName" asp-route-pageNum ="1">@x.TeamName</a>
     <br />
 }  

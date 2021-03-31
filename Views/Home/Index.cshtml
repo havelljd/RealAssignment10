@@ -1,20 +1,39 @@
-﻿@{ 
+﻿@{
     string title = (string)ViewData["teamname"];
+    if (ViewData["teamid"] == null)
+    {
+        ViewBag.teamid = null;
+    }
+    else
+    {
+        ViewBag.teamid = (long)ViewData["teamid"];
+
+    }
+
+    if (title == "Home")
+            {
+                
+            }
+
     ViewBag.Title = title;
 }
+
+@*I had a ton of trouble with the logic on the taghelper for some reason, so I executed some logic here in this page to pass the correct info to the taghelper, which then passes it to the controller and that's it!*@
 
 @model IndexViewModel
 
 <h1>@ViewBag.Title</h1>
 
 @foreach (var x in Model.Bowlers)
-            {
-                <br />
-                @x.BowlerFirstName
-            }
+{
+    <br />
+    @x.BowlerFirstName
+}
 <br />
 
-<div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class=" btn"
+
+<div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-url-teamname="@ViewBag.Title" page-url-teamid="@ViewBag.teamid"
+page-class=" btn" asp-route-pageNum = "0"
      page-class-normal="btn-outline-dark"
      page-class-selected="btn-primary"
      class="btn-group pull-right m-1"></div>

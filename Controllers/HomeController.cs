@@ -15,7 +15,7 @@ namespace BowlingStuff.Controllers
         private readonly ILogger<HomeController> _logger;
         private BowlingLeagueContext _context;
 
-        public int itemsPerPage = 5;
+        public int itemsPerPage = 3;
 
         public HomeController(ILogger<HomeController> logger, BowlingLeagueContext cxt)
         {
@@ -25,7 +25,23 @@ namespace BowlingStuff.Controllers
 
         public IActionResult Index(long? teamid, string teamname, int pageNum)
         {
-            ViewData["teamname"] = teamname;
+            if (teamname == null)
+            {
+                ViewData["teamname"] = "Home";
+            }
+            else
+            {
+                ViewData["teamname"] = teamname;
+            }
+            if (teamid == null)
+            {
+                ViewData["teamid"] = null;
+            }
+            else
+            {
+                ViewData["teamid"] = teamid;
+            }
+
             return View(new IndexViewModel
             {
                 Bowlers = (_context.Bowlers
