@@ -10,11 +10,6 @@
 
     }
 
-    if (title == "Home")
-            {
-                
-            }
-
     ViewBag.Title = title;
 }
 
@@ -27,13 +22,16 @@
 @foreach (var x in Model.Bowlers)
 {
     <br />
-    @x.BowlerFirstName
+    <b><span>@x.BowlerLastName</span><span>, </span><span>@x.BowlerFirstName</span><span> @x.BowlerMiddleInit</span></b><br /><span>@x.BowlerAddress</span>
+    <span>, @x.BowlerCity</span><span>, @x.BowlerState</span><span>, @x.BowlerZip</span><br /><span>Phone: @x.BowlerPhoneNumber</span>
+    <br />
 }
 <br />
 
 
-<div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-url-teamname="@ViewBag.Title" page-url-teamid="@ViewBag.teamid"
-page-class=" btn" asp-route-pageNum = "0"
+<div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" 
+     page-url-teamname="@ViewBag.Title" page-url-teamid="@ViewBag.teamid"
+     page-class=" btn"
      page-class-normal="btn-outline-dark"
      page-class-selected="btn-primary"
      class="btn-group pull-right m-1"></div>

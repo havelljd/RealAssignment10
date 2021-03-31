@@ -15,7 +15,7 @@ namespace BowlingStuff.Controllers
         private readonly ILogger<HomeController> _logger;
         private BowlingLeagueContext _context;
 
-        public int itemsPerPage = 3;
+        public int itemsPerPage = 5;
 
         public HomeController(ILogger<HomeController> logger, BowlingLeagueContext cxt)
         {

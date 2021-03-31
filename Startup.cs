@@ -53,6 +53,9 @@ namespace BowlingStuff
 
             app.UseEndpoints(endpoints =>
             {
+                // I guess we don't need endpoints looking nice for this assignment, so no need to change it here!
+                //endpoints.MapControllerRoute("teamname", "TeamName/{teamname}/Page{pageNum}", new { controller = "Home", action = "Index" });
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

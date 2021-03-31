@@ -1,9 +1,40 @@
-﻿@model IEnumerable<Team>
+﻿@{
+    string teamname = (string)ViewData["teamname"];
+}
 
-<a asp-action="Index" asp-controller="Home" asp-route-mealtype="">Home</a>
-<br />
-@foreach (var x in Model)
-{   
-    <a asp-action="Index" asp-controller="Home" asp-route-teamid="@x.TeamId" asp-route-teamname="@x.TeamName" asp-route-pageNum ="1">@x.TeamName</a>
+@model IEnumerable<Team>
+
+@*I just ended up highlighting the selection here with razor code, as opposed to creating another tag helper.*@
+
+
+@if (teamname == "Home")
+{
+    <b>
+        <a asp-action="Index" asp-controller="Home" asp-route-mealtype="">Home</a>
+        <br />
+    </b>
+}
+else
+{
+    <a asp-action="Index" asp-controller="Home" asp-route-mealtype="">Home</a>
     <br />
+}
+
+
+@foreach (var x in Model)
+{
+    if (teamname == x.TeamName)
+    {
+        <b>
+            <a asp-action="Index" asp-controller="Home" asp-route-teamid="@x.TeamId" asp-route-teamname="@x.TeamName"
+               asp-route-pageNum="1">@x.TeamName</a>
+            <br />
+        </b>
+    }
+    else
+    {
+        <a asp-action="Index" asp-controller="Home" asp-route-teamid="@x.TeamId" asp-route-teamname="@x.TeamName"
+           asp-route-pageNum="1">@x.TeamName</a>
+        <br />
+    }
 }  
