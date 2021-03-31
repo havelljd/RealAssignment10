@@ -1,0 +1,20 @@
+﻿@{ 
+    string title = (string)ViewData["teamname"];
+    ViewBag.Title = title;
+}
+
+@model IndexViewModel
+
+<h1>@ViewBag.Title</h1>
+
+@foreach (var x in Model.Bowlers)
+            {
+                <br />
+                @x.BowlerFirstName
+            }
+<br />
+
+<div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class=" btn"
+     page-class-normal="btn-outline-dark"
+     page-class-selected="btn-primary"
+     class="btn-group pull-right m-1"></div>
