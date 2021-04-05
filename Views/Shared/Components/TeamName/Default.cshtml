@@ -3,20 +3,19 @@
 }
 
 @model IEnumerable<Team>
-
-@*I just ended up highlighting the selection here with razor code, as opposed to creating another tag helper.*@
+@*Broke it into two if statements, I don't love the syntax of the other way. This makes more sense to me!*@
 
 
 @if (teamname == "Home")
 {
     <b>
-        <a asp-action="Index" asp-controller="Home" asp-route-mealtype="">Home</a>
+        <a class="btn btn-block btn-outline-primary" asp-action="Index" asp-controller="Home" asp-route-pageNum="1">Home</a>
         <br />
     </b>
 }
 else
 {
-    <a asp-action="Index" asp-controller="Home" asp-route-teamid="" asp-route-teamname="Home" >Home</a>
+    <a class = "btn btn-block btn-outline-secondary" asp-action="Index" asp-controller="Home" asp-route-teamid="" asp-route-teamname="Home" asp-route-pageNum="1">Home</a>
     <br />
 }
 
@@ -25,15 +24,15 @@ else
 {
     if (teamname == x.TeamName)
     {
-        <b>
-            <a asp-action="Index" asp-controller="Home" asp-route-teamid="@x.TeamId" asp-route-teamname="@x.TeamName"
+        
+            <a class="btn btn-block btn-primary" asp-action="Index" asp-controller="Home" asp-route-teamid="@x.TeamId" asp-route-teamname="@x.TeamName"
                asp-route-pageNum="1">@x.TeamName</a>
             <br />
-        </b>
+        
     }
     else
     {
-        <a asp-action="Index" asp-controller="Home" asp-route-teamid="@x.TeamId" asp-route-teamname="@x.TeamName"
+        <a class = "btn btn-block btn-outline-secondary" asp-action="Index" asp-controller="Home" asp-route-teamid="@x.TeamId" asp-route-teamname="@x.TeamName"
            asp-route-pageNum="1">@x.TeamName</a>
         <br />
     }
